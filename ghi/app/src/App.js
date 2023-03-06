@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
-import CreateVehicleModel from './VehicleModels/CreateVehicleModel'
-import VehicleModelsList from './VehicleModels/ListVehicleModels';
+import ModelForm from './VehicleModels/CreateVehicleModel'
+import ModelList from './VehicleModels/ListVehicleModels';
 import Nav from './Nav';
 import ManufacturersList from './Manufacturers/ListManufacturers';
 import ManufacturerForm from './Manufacturers/CreateManufacturer';
+import CreateAutomobile from './Automobiles/CreateAutomobile';
+import AutoMobilesList from './Automobiles/ListAutomobiles';
 
 function App() {
   return (
@@ -15,12 +17,16 @@ function App() {
 
           <Route path="/" element={<MainPage />} />
           <Route path="/models">
-            <Route index element={<VehicleModelsList/>} />
-            <Route path="new" element={<CreateVehicleModel />} />
+            <Route index element={<ModelList />} />
+            <Route path="new" element={<ModelForm />} />
           </Route>
           <Route path="/manufacturers">
             <Route index element={<ManufacturersList />} />
             <Route path="new" element={<ManufacturerForm />} />
+          </Route>
+          <Route path="/automobiles">
+            <Route index element={<AutoMobilesList />} />
+            <Route path="new" element={CreateAutomobile} />
           </Route>
 
         </Routes>

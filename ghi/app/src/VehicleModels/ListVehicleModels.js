@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 
-const VehicleModelsList = () => {
+const ModelList = () => {
   const [models, setModels] = useState([])
 
   const getData = async () => {
     const response = await fetch('http://localhost:8100/api/models/')
     if (response.ok){
       const data = await response.json();
-      console.log(data);
       setModels(data.models)
     }
   }
@@ -70,4 +69,4 @@ const VehicleModelsList = () => {
     </>
 }
 
-export default VehicleModelsList
+export default ModelList
