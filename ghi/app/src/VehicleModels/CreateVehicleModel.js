@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-function VehicleModelForm(){
+function ModelForm(){
     const [manufacturers, setManufacturers] = useState([])
     const [formData, setFormData] = useState({
         name: '',
@@ -14,7 +14,6 @@ function VehicleModelForm(){
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
             setManufacturers(data.manufacturers);
         }
     }
@@ -34,7 +33,6 @@ function VehicleModelForm(){
                 'Content-Type': 'application/json',
             }
         };
-        console.log(fetchConfig);
         const response = await fetch(vehicleModelsUrl, fetchConfig);
 
         if (response.ok) {
@@ -90,4 +88,4 @@ function VehicleModelForm(){
     )
 }
 
-export default VehicleModelForm;
+export default ModelForm;
