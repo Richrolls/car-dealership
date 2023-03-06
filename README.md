@@ -3,7 +3,7 @@
 Team:
 
 * Matthew - Automobile Service (branched)
-* Person 2 - Which microservice?
+* Richard - Sales Service
 
 ## Design
 
