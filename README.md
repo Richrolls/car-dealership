@@ -2,8 +2,13 @@
 
 Team:
 
+<<<<<<< HEAD
 * Matthew - Automobile Service (branched)
 * Person 2 - Which microservice?
+=======
+* Matthew - Automobile Service
+* Richard - Sales Service
+>>>>>>> main
 
 ## Design
 
