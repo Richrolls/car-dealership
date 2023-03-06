@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Richard - Sales
+* Matthew - Automobile Service
+* Richard - Sales Service
 
 ## Design
 
