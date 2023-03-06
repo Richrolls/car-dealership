@@ -46,7 +46,7 @@ const AutomobileForm = () => {
 
     if (response.ok) {
       const data = await response.json();
-      setModelIds(data.models.id);
+      setModelIds(data.models);
     }
   };
 

@@ -5,7 +5,7 @@ import ModelList from './VehicleModels/ListVehicleModels';
 import Nav from './Nav';
 import ManufacturersList from './Manufacturers/ListManufacturers';
 import ManufacturerForm from './Manufacturers/CreateManufacturer';
-import CreateAutomobile from './Automobiles/CreateAutomobile';
+import AutomobileForm from './Automobiles/CreateAutomobile';
 import AutoMobilesList from './Automobiles/ListAutomobiles';
 
 function App() {
@@ -26,11 +26,6 @@ function App() {
           </Route>
           <Route path="/automobiles">
             <Route index element={<AutoMobilesList />} />
-            <Route path="new" element={CreateAutomobile} />
-          </Route>
-
-          <Route path="/automobiles">
-
             <Route path="new" element={<AutomobileForm />} />
           </Route>
 
