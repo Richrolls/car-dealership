@@ -26,19 +26,19 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
     customer_name = models.CharField(max_length=200)
-    date = models.DateField()
+    date = models.DateTimeField(null=True)
     time = models.CharField(max_length=50)
     reason = models.CharField(max_length=200)
 
     technician = models.ForeignKey(
         Technician,
-        related_name="appointments",
+        related_name="technician",
         on_delete=models.CASCADE,
     )
 
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="appointments",
+        related_name="automobile",
         on_delete=models.CASCADE,
     )
 
