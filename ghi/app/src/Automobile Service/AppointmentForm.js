@@ -30,7 +30,7 @@ const AppointmentForm = () => {
     const response = await fetch(appointmentsUrl, fetchConfig);
     if (response.ok) {
       const newAppointment = await response.json();
-      console.log(newAppointment);
+
       setCustomerName("");
       setDate("");
       setTime("");
@@ -44,6 +44,7 @@ const AppointmentForm = () => {
   const [time, setTime] = useState("");
   const [reason, setReason] = useState("");
   const [vin, setVin] = useState("");
+  const [technicians, setTechnicians] = useState([]);
   const [technician, setTechnician] = useState("");
 
   const handleCustomerNameChange = (event) => {
@@ -76,6 +77,15 @@ const AppointmentForm = () => {
     setTechnician(value);
   };
 
+  const fetchData = async () => {
+    const url = "http://localhost:8080/api/technicians/";
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      setTechnicians(data.technicians);
+    }
+  };
+
 
   useEffect(() => {
     fetchData();
@@ -85,46 +95,91 @@ const AppointmentForm = () => {
     <div className="my-5 container">
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-          <h1>Add a technician</h1>
+          <h1>Add an appointment </h1>
           <form onSubmit={handleSubmit} id="create-technician-form">
             <div className="form-floating mb-3">
               <input
-                value={name}
-                onChange={handleNameChange}
-                placeholder="Name"
+                value={customerName}
+                onChange={handleCustomerNameChange}
+                placeholder="customerName"
                 required
                 type="text"
-                id="name"
+                id="customerName"
                 className="form-control"
-                name="name"
+                name="customerName"
               />
-              <label htmlFor="name">Name</label>
+              <label htmlFor="customerName">Customer Name</label>
             </div>
             <div className="form-floating mb-3">
               <input
-                value={employeeNumber}
-                onChange={handleEmployeeNumberChange}
-                placeholder="employeeNumber"
+                value={date}
+                onChange={handleDateChange}
+                placeholder="date"
                 required
-                type="number"
-                id="employeeNumber"
+                type="date"
+                id="date"
                 className="form-control"
-                name="employeeNumber"
+                name="date"
               />
-              <label htmlFor="employeeNumber">Employee Number</label>
+              <label htmlFor="date">Date</label>
             </div>
             <div className="form-floating mb-3">
               <input
-                value={pictureUrl}
-                onChange={handlePictureUrlChange}
-                placeholder="pictureUrl"
+                value={time}
+                onChange={handleTimeChange}
+                placeholder="time"
                 required
                 type="text"
-                id="pictureUrl"
+                id="time"
                 className="form-control"
-                name="pictureUrl"
+                name="time"
               />
-              <label htmlFor="pictureUrl">Picture Url</label>
+              <label htmlFor="time">Time of appointment</label>
+            </div>
+            <div className="form-floating mb-3">
+              <input
+                value={reason}
+                onChange={handleReasonChange}
+                placeholder="reason"
+                required
+                type="text"
+                id="reason"
+                className="form-control"
+                name="reason"
+              />
+              <label htmlFor="reason">Reason</label>
+            </div>
+            <div className="form-floating mb-3">
+              <input
+                value={vin}
+                onChange={handleVinChange}
+                placeholder="vin"
+                required
+                type="reason"
+                id="vin"
+                className="form-control"
+                name="vin"
+              />
+              <label htmlFor="vin">VIN</label>
+            </div>
+            <div className="mb-3">
+              <select
+                value={technician}
+                onChange={handleTechnicianChange}
+                required
+                id="technician"
+                className="form-select"
+                name="technician"
+              >
+                <option value="">Choose a technician</option>
+                {technicians.map((technician) => {
+                  return (
+                    <option value={technician.id} key={technician.id}>
+                      {technician.name}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
             <button className="btn btn-primary">Create</button>
           </form>
