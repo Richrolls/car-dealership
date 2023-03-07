@@ -11,6 +11,7 @@ import CustomerForm from './Sales/CustomerForm';
 import SalesPersonForm from './Sales/SalesPersonForm';
 import SaleForm from './Sales/SaleForm';
 import SalesList from './Sales/SalesList';
+import TechnicianForm from './Automobile Service/TechnicianForm';
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
           <Route path="/sales">
             <Route index element={<SalesList />} />
             <Route path="new" element={<SaleForm />} />
+          </Route>
+          <Route path="/technicians">
+            <Route path="new" element={<TechnicianForm />} />
           </Route>
         </Routes>
       </div>
