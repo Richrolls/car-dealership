@@ -33,11 +33,9 @@ function App() {
             <Route path="new" element={<AutomobileForm />} />
           </Route>
           <Route path="/customers">
-            <Route index element={<CustomerForm />} />
             <Route path="new" element={<CustomerForm />} />
           </Route>
           <Route path="/salespeople">
-            <Route index element={<CustomerForm />} />
             <Route path="new" element={<SalesPersonForm />} />
           </Route>
           <Route path="/sales">
