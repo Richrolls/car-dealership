@@ -13,7 +13,7 @@ class SalesPerson(models.Model):
     employee_id = models.CharField(max_length=100)
 
     def get_api_url(self):
-        return reverse("api_vehicle_model", kwargs={"pk": self.id})
+        return reverse("", kwargs={"pk": self.id})
 
 
 class PotentialCustomer(models.Model):
@@ -22,7 +22,7 @@ class PotentialCustomer(models.Model):
     phone_number = models.CharField(max_length=12)
 
     def get_api_url(self):
-        return reverse("api_vehicle_model", kwargs={"pk": self.id})
+        return reverse("", kwargs={"pk": self.id})
 
 
 class SaleRecord(models.Model):
