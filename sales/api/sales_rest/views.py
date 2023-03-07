@@ -3,55 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
 
-from common.json import ModelEncoder
 from .models import AutomobileVO, SaleRecord, SalesPerson, PotentialCustomer
-
-class AutomobileVODetailEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin", "import_href"]
-
-
-class SalesPersonListEncoder(ModelEncoder):
-    model = SalesPerson
-    properties = [
-        "id",
-        "name",
-        "employee_id",
-    ]
-
-
-class PotentialCustomerListEncoder(ModelEncoder):
-    model = PotentialCustomer
-    properties = [
-        "id",
-        "name",
-        "address",
-        "phone_number",
-    ]
-
-
-class PotentialCustomerDetailEncoder(ModelEncoder):
-    model = PotentialCustomer
-    properties = [
-        "id",
-        "name",
-    ]
-
-
-class SaleRecordListEncoder(ModelEncoder):
-    model = SaleRecord
-    properties = [
-        "id",
-        "price",
-        "automobile",
-        "salesperson",
-        "potential_customer",
-    ]
-    encoders = {
-        "automobile": AutomobileVODetailEncoder(),
-        "salesperson": SalesPersonListEncoder(),
-        "potential_customer": PotentialCustomerDetailEncoder(),
-    }
+from.encoders import SaleRecordListEncoder, SalesPersonEncoder, PotentialCustomerEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -60,14 +13,14 @@ def api_sales_people(request):
         sales_people = SalesPerson.objects.all()
         return JsonResponse(
             {"sales_people": sales_people},
-            encoder=SalesPersonListEncoder,
+            encoder=SalesPersonEncoder,
         )
     else:
         content = json.loads(request.body)
         sales_person = SalesPerson.objects.create(**content)
         return JsonResponse(
             sales_person,
-            encoder=SalesPersonListEncoder,
+            encoder=SalesPersonEncoder,
             safe=False,
         )
 
@@ -78,14 +31,14 @@ def api_potential_customers(request):
         potential_customers = PotentialCustomer.objects.all()
         return JsonResponse(
             {"potential_customers": potential_customers},
-            encoder=PotentialCustomerListEncoder,
+            encoder=PotentialCustomerEncoder,
         )
     else:
         content = json.loads(request.body)
         potential_customer = PotentialCustomer.objects.create(**content)
         return JsonResponse(
             potential_customer,
-            encoder=PotentialCustomerListEncoder,
+            encoder=PotentialCustomerEncoder,
             safe=False,
         )
 
