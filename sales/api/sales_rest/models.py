@@ -26,7 +26,7 @@ class PotentialCustomer(models.Model):
 
 
 class SaleRecord(models.Model):
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    price = models.IntegerField()
 
     automobile = models.ForeignKey(
         AutomobileVO,

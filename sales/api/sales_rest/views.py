@@ -87,11 +87,11 @@ def api_potential_customers(request):
 
 
 @require_http_methods(["GET", "POST"])
-def api_records(request):
+def api_sales(request):
     if request.method == "GET":
-        records = SaleRecord.objects.all()
+        sales = SaleRecord.objects.all()
         return JsonResponse(
-            {"records": records},
+            {"sales": sales},
             encoder=SaleRecordListEncoder,
         )
     else:
@@ -110,21 +110,21 @@ def api_records(request):
         potential_customer = PotentialCustomer.objects.get(pk=potential_customer_id)
         content["potential_customer"] = potential_customer
 
-        record = SaleRecord.objects.create(**content)
+        sale = SaleRecord.objects.create(**content)
         return JsonResponse(
-            record,
+            sale,
             encoder=SaleRecordListEncoder,
             safe=False,
         )
 
 
 @require_http_methods(["GET", "DELETE"])
-def api_record(request, pk):
+def api_sale(request, pk):
     if request.method == "GET":
         try:
-            record = SaleRecord.objects.get(id=pk)
+            sale = SaleRecord.objects.get(id=pk)
             return JsonResponse(
-                record,
+                sale,
                 encoder=SaleRecordListEncoder,
                 safe=False
             )
@@ -134,10 +134,10 @@ def api_record(request, pk):
             return response
     else:
         try:
-            record = SaleRecord.objects.get(id=pk)
-            record.delete()
+            sale = SaleRecord.objects.get(id=pk)
+            sale.delete()
             return JsonResponse(
-                record,
+                sale,
                 encoder=SaleRecordListEncoder,
                 safe=False,
             )
