@@ -12,6 +12,7 @@ import SalesPersonForm from './Sales/SalesPersonForm';
 import SaleForm from './Sales/SaleForm';
 import SalesList from './Sales/SalesList';
 import TechnicianForm from './Automobile Service/TechnicianForm';
+import SalesPersonSaleList from './Sales/SalesPersonSalesList';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           </Route>
           <Route path="/salespeople">
             <Route path="new" element={<SalesPersonForm />} />
+            <Route path='sales' element={< SalesPersonSaleList/>} />
           </Route>
           <Route path="/sales">
             <Route index element={<SalesList />} />

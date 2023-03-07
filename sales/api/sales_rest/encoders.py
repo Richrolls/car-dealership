@@ -26,14 +26,6 @@ class PotentialCustomerEncoder(ModelEncoder):
     ]
 
 
-class PotentialCustomerDetailEncoder(ModelEncoder):
-    model = PotentialCustomer
-    properties = [
-        "id",
-        "name",
-    ]
-
-
 class SaleRecordListEncoder(ModelEncoder):
     model = SaleRecord
     properties = [
@@ -46,5 +38,5 @@ class SaleRecordListEncoder(ModelEncoder):
     encoders = {
         "automobile": AutomobileVODetailEncoder(),
         "salesperson": SalesPersonEncoder(),
-        "potential_customer": PotentialCustomerDetailEncoder(),
+        "potential_customer": PotentialCustomerEncoder(),
     }

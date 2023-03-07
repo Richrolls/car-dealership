@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 
-const SalesList = () => {
+const SalesPersonSaleList = () => {
   const [salespeople, setSalespeople] = useState([])
   const [sales, setSales] = useState([])
+  const [filterTerm, setFilterTerm] = useState("")
 
   const getSalespersonData = async () => {
     const response = await fetch('http://localhost:8090/api/salespeople/')
@@ -22,14 +23,14 @@ const SalesList = () => {
 
 
   useEffect(()=> {
-    getSalespersonData(),
-    getSalesData()
+    getSalespersonData();
+    getSalesData();
   }, [])
 
-  const handleFormChange = (e) => {
+  const handleSalesPersonChange = (e) => {
     const value = e.target.value;
-    const inputName = e.target.name;
-    sales.
+    console.log(value)
+    setFilterTerm(value);
 }
 
   return <>
@@ -37,15 +38,15 @@ const SalesList = () => {
             <div className="shadow p-4 mt-4">
                 <div className='flex justify-content-center'>
                     <h1 className='text-center text-white'>Sales Person History</h1>
-                    <select onChange={handleFormChange} value={formData.potential_customer_id} required name='salesperson_id' id='salesperson_id' className='form-control'>
-                            <option value=''>Choose a salesperson</option>
-                                {salespeople.map(salesperson => {
-                                    return (
-                                        <option key={salesperson.id} value={salesperson.id}>
-                                            {salesperson.name}
-                                        </option>
-                                    )
-                                })}
+                    <select onChange={handleSalesPersonChange} required name='person_id' id='person_id' className='form-control'>
+                        <option value=''>Choose a salesperson</option>
+                            {salespeople.map(person => {
+                                return (
+                                    <option key={person.id} value={person.name}>
+                                        {person.name}
+                                    </option>
+                                )
+                            })}
                     </select>
                 </div>
             </div>
@@ -60,15 +61,15 @@ const SalesList = () => {
                   </thead>
                   <tbody>
                       {
-                      sales.map(sale => {
+                      sales
+                        .filter((sale) => sale.salesperson.name.includes(filterTerm))
+                        .map(sale => {
                           return (
                           <tr className='bg-light' key={sale.id}>
                               <td className='text-center'>{ sale.salesperson.name }</td>
-                              <td className='text-center'>{ sale.salesperson.employee_id }</td>
                               <td className='text-center'> { sale.potential_customer.name }</td>
                               <td className='text-center'>{ sale.automobile.vin }</td>
                               <td className='text-center'>{ sale.price }</td>
-                              <td className='text-center'><button onClick={handleDelete} id={sale.id} className="btn btn-danger">Delete</button></td>
                           </tr>
                           );
                       })
@@ -79,4 +80,4 @@ const SalesList = () => {
     </>
 }
 
-export default SalesList
+export default SalesPersonSaleList

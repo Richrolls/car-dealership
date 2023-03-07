@@ -53,19 +53,33 @@ def api_sales(request):
         )
     else:
         content = json.loads(request.body)
-
-        automobile_id = content["automobile_id"]
-        automobile = AutomobileVO.objects.get(id=automobile_id)
-        content["automobile"] = automobile
-
-
-        salesperson_id = content["salesperson_id"]
-        salesperson = SalesPerson.objects.get(pk=salesperson_id)
-        content["salesperson"] = salesperson
-
-        potential_customer_id = content["potential_customer_id"]
-        potential_customer = PotentialCustomer.objects.get(pk=potential_customer_id)
-        content["potential_customer"] = potential_customer
+        try:
+            automobile_id = content["automobile_id"]
+            automobile = AutomobileVO.objects.get(pk=automobile_id)
+            content["automobile"] = automobile
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "Automobile id does not exist."},
+                status=404,
+            )
+        try:
+            salesperson_id = content["salesperson_id"]
+            salesperson = SalesPerson.objects.get(pk=salesperson_id)
+            content["salesperson"] = salesperson
+        except SalesPerson.DoesNotExist:
+            return JsonResponse(
+                {"message": "Salesperson id does not exist."},
+                status=404,
+            )
+        try:
+            potential_customer_id = content["potential_customer_id"]
+            potential_customer = PotentialCustomer.objects.get(pk=potential_customer_id)
+            content["potential_customer"] = potential_customer
+        except PotentialCustomer.DoesNotExist:
+            return JsonResponse(
+                {"message": "Customer id does not exist."},
+                status=404,
+            )
 
         sale = SaleRecord.objects.create(**content)
         return JsonResponse(
@@ -86,7 +100,7 @@ def api_sale(request, pk):
                 safe=False
             )
         except SaleRecord.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
+            response = JsonResponse({"message": "Sale does not exist."})
             response.status_code = 404
             return response
     else:
@@ -99,4 +113,4 @@ def api_sale(request, pk):
                 safe=False,
             )
         except SaleRecord.DoesNotExist:
-            return JsonResponse({"message": "Does not exist"})
+            return JsonResponse({"message": "Sale does not exist."})
