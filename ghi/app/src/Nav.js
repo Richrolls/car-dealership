@@ -22,6 +22,8 @@ function Nav() {
             <NavLink className="navbar-brand" to="/sales">View Sales</NavLink>
             <NavLink className="navbar-brand" to="/sales/new">Add a Sale</NavLink>
             <NavLink className="navbar-brand" to="/technicians/new">Add a technician</NavLink>
+            <NavLink className="navbar-brand" to="/appointments">View appointments</NavLink>
+            <NavLink className="navbar-brand" to="/appointments/new">Add an appointment</NavLink>
           </ul>
         </div>
       </div>
