@@ -55,8 +55,8 @@ const SalesList = () => {
                       sales.map(sale => {
                           return (
                           <tr className='bg-light' key={sale.id}>
-                              <td className='text-center'>{ sale.salesperson.name }</td>
-                              <td className='text-center'>{ sale.salesperson.employee_id }</td>
+                              <td className='text-center'>{ sale.sales_person.name }</td>
+                              <td className='text-center'>{ sale.sales_person.employee_id }</td>
                               <td className='text-center'> { sale.potential_customer.name }</td>
                               <td className='text-center'>{ sale.automobile.vin }</td>
                               <td className='text-center'>{ sale.price }</td>
