@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 
 function SaleForm(){
     const [automobiles, setAutomobiles] = useState([])
-    const [salespeople, setSalespeople] = useState([])
+    const [salesPeople, setSalesPeople] = useState([])
     const [customers, setCustomers] = useState([])
     const [soldAutomobiles, setSoldAutomobiles] = useState([])
     const [formData, setFormData] = useState({
         price: '',
         automobile_id: '',
-        salesperson_id: '',
+        sales_person_id: '',
         potential_customer_id: '',
     })
 
@@ -38,7 +38,7 @@ function SaleForm(){
 
         if (response.ok) {
             const data = await response.json();
-            setSalespeople(data.sales_people);
+            setSalesPeople(data.sales_people);
         }
     }
 
@@ -76,7 +76,7 @@ function SaleForm(){
             setFormData({
                 price: '',
                 automobile_id: '',
-                salesperson_id: '',
+                sales_person_id: '',
                 potential_customer_id: '',
             })
         }
@@ -131,12 +131,12 @@ function SaleForm(){
                             </select>
                         </div>
                         <div className='mb-3'>
-                            <select onChange={handleFormChange} value={formData.salesperson_id} required name='salesperson_id' id='salesperson_id' className='form-control'>
-                                <option value=''>Choose a salesperson</option>
-                                    {salespeople.map(salesperson => {
+                            <select onChange={handleFormChange} value={formData.sales_person_id} required name='sales_person_id' id='sales_person_id' className='form-control'>
+                                <option value=''>Choose a sales person</option>
+                                    {salesPeople.map(salesPerson => {
                                         return (
-                                            <option key={salesperson.id} value={salesperson.id}>
-                                                {salesperson.name}
+                                            <option key={salesPerson.id} value={salesPerson.id}>
+                                                {salesPerson.name}
                                             </option>
                                         )
                                     })}

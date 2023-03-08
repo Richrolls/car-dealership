@@ -63,9 +63,9 @@ def api_sales(request):
                 status=404,
             )
         try:
-            salesperson_id = content["salesperson_id"]
-            salesperson = SalesPerson.objects.get(pk=salesperson_id)
-            content["salesperson"] = salesperson
+            sales_person_id = content["sales_person_id"]
+            sales_person = SalesPerson.objects.get(pk=sales_person_id)
+            content["sales_person"] = sales_person
         except SalesPerson.DoesNotExist:
             return JsonResponse(
                 {"message": "Salesperson id does not exist."},

@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 
 const SalesPersonSaleList = () => {
-  const [salespeople, setSalespeople] = useState([])
+  const [salesPeople, setSalesPeople] = useState([])
   const [sales, setSales] = useState([])
   const [filterTerm, setFilterTerm] = useState("")
 
-  const getSalespersonData = async () => {
+  const getSalesPersonData = async () => {
     const response = await fetch('http://localhost:8090/api/salespeople/')
     if (response.ok){
       const data = await response.json();
-      setSalespeople(data.sales_people)
+      setSalesPeople(data.sales_people)
     }
   }
 
@@ -22,7 +22,7 @@ const SalesPersonSaleList = () => {
   }
 
   useEffect(()=> {
-    getSalespersonData();
+    getSalesPersonData();
     getSalesData();
   }, [])
 
@@ -37,8 +37,8 @@ const SalesPersonSaleList = () => {
                 <div className='flex justify-content-center'>
                     <h1 className='text-center text-white'>Sales Person History</h1>
                     <select onChange={handleSalesPersonChange} required name='person_id' id='person_id' className='form-control'>
-                        <option value=''>Choose a salesperson</option>
-                            {salespeople.map(person => {
+                        <option value=''>Choose a sales person</option>
+                            {salesPeople.map(person => {
                                 return (
                                     <option key={person.id} value={person.name}>
                                         {person.name}
@@ -60,11 +60,11 @@ const SalesPersonSaleList = () => {
                   <tbody>
                       {
                       sales
-                        .filter((sale) => sale.salesperson.name.includes(filterTerm))
+                        .filter((sale) => sale.sales_person.name.includes(filterTerm))
                         .map(sale => {
                           return (
                           <tr className='bg-light' key={sale.id}>
-                              <td className='text-center'>{ sale.salesperson.name }</td>
+                              <td className='text-center'>{ sale.sales_person.name }</td>
                               <td className='text-center'> { sale.potential_customer.name }</td>
                               <td className='text-center'>{ sale.automobile.vin }</td>
                               <td className='text-center'>{ sale.price }</td>
