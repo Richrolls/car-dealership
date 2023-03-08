@@ -4,12 +4,23 @@ function SaleForm(){
     const [automobiles, setAutomobiles] = useState([])
     const [salespeople, setSalespeople] = useState([])
     const [customers, setCustomers] = useState([])
+    const [soldAutomobiles, setSoldAutomobiles] = useState([])
     const [formData, setFormData] = useState({
         price: '',
         automobile_id: '',
         salesperson_id: '',
         potential_customer_id: '',
     })
+
+    const getSoldAutomobileData = async () => {
+        const url = 'http://localhost:8090/api/sales/';
+        const response = await fetch(url);
+
+        if (response.ok) {
+            const data = await response.json();
+            setSoldAutomobiles(data.sales);
+        }
+    }
 
     const getAutomobileData = async () => {
         const url = 'http://localhost:8100/api/automobiles/';
@@ -45,6 +56,7 @@ function SaleForm(){
         getAutomobileData();
         getSalespersonData();
         getCustomerData();
+        getSoldAutomobileData();
     }, [])
 
     const handleSubmit = async(event) => {
@@ -68,6 +80,7 @@ function SaleForm(){
                 potential_customer_id: '',
             })
         }
+        window.location.reload();
     }
 
     const handleFormChange = (e) => {
@@ -78,6 +91,20 @@ function SaleForm(){
 
             [inputName]: value
         });
+    }
+
+    const getAvailableAutomobiles = () => {
+        let arr = [...automobiles]
+        const soldCars = {};
+        for (const soldAutomobile of soldAutomobiles) {
+            soldCars[soldAutomobile.automobile.import_href] = soldAutomobile.automobile.import_href
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (automobiles[i].href in soldCars) {
+                delete arr[i];
+            }
+        }
+        return arr;
     }
 
     return (
@@ -93,13 +120,14 @@ function SaleForm(){
                         <div className='mb-3'>
                             <select onChange={handleFormChange} value={formData.automobile_id} required name='automobile_id' id='automobile_id' className='form-control'>
                                 <option value=''>Choose an automobile</option>
-                                    {automobiles.map(automobile => {
-                                        return (
-                                            <option key={automobile.id} value={automobile.id}>
-                                                {automobile.vin}
-                                            </option>
-                                        )
-                                    })}
+                                    {getAvailableAutomobiles()
+                                        .map(automobile => {
+                                            return (
+                                                <option key={automobile.id} value={automobile.id}>
+                                                    {automobile.vin}
+                                                </option>
+                                            )
+                                        })}
                             </select>
                         </div>
                         <div className='mb-3'>

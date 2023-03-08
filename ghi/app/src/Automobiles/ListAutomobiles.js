@@ -59,7 +59,7 @@ const AutomobilesList = () => {
                               <td className='text-center'>{ auto.year }</td>
                               <td className='text-center'>{ auto.model.name }</td>
                               <td className='text-center'>{ auto.model.manufacturer.name }</td>
-                              <td className='text-center'><button onClick={handleDelete} id={auto.id} className="btn btn-danger">Delete</button></td>
+                              <td className='text-center'><button onClick={handleDelete} id={auto.vin} className="btn btn-danger">Delete</button></td>
                           </tr>
                           );
                       })

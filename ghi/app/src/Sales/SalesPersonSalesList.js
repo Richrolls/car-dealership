@@ -21,7 +21,6 @@ const SalesPersonSaleList = () => {
     }
   }
 
-
   useEffect(()=> {
     getSalespersonData();
     getSalesData();
@@ -29,7 +28,6 @@ const SalesPersonSaleList = () => {
 
   const handleSalesPersonChange = (e) => {
     const value = e.target.value;
-    console.log(value)
     setFilterTerm(value);
 }
 

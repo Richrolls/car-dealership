@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 import json
 
 from .models import AutomobileVO, SaleRecord, SalesPerson, PotentialCustomer
-from.encoders import SaleRecordListEncoder, SalesPersonEncoder, PotentialCustomerEncoder
+from.encoders import SaleRecordEncoder, SalesPersonEncoder, PotentialCustomerEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -49,7 +49,7 @@ def api_sales(request):
         sales = SaleRecord.objects.all()
         return JsonResponse(
             {"sales": sales},
-            encoder=SaleRecordListEncoder,
+            encoder=SaleRecordEncoder,
         )
     else:
         content = json.loads(request.body)
@@ -84,7 +84,7 @@ def api_sales(request):
         sale = SaleRecord.objects.create(**content)
         return JsonResponse(
             sale,
-            encoder=SaleRecordListEncoder,
+            encoder=SaleRecordEncoder,
             safe=False,
         )
 
@@ -96,7 +96,7 @@ def api_sale(request, pk):
             sale = SaleRecord.objects.get(id=pk)
             return JsonResponse(
                 sale,
-                encoder=SaleRecordListEncoder,
+                encoder=SaleRecordEncoder,
                 safe=False
             )
         except SaleRecord.DoesNotExist:
@@ -109,7 +109,7 @@ def api_sale(request, pk):
             sale.delete()
             return JsonResponse(
                 sale,
-                encoder=SaleRecordListEncoder,
+                encoder=SaleRecordEncoder,
                 safe=False,
             )
         except SaleRecord.DoesNotExist:
