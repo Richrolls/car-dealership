@@ -18,7 +18,6 @@ function AppointmentForm(){
         if (response.ok) {
             const data = await response.json();
             setTechnicians(data.technicians);
-            console.log("technician data hereeeeeee:", data)
         }
     }
 

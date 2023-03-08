@@ -19,7 +19,6 @@ const AppointmentsList = () => {
     if (response.ok){
       const data = await response.json();
       setInventoriedAutos(data.autos)
-      console.log("inventory:", data.autos)
     }
   }
 

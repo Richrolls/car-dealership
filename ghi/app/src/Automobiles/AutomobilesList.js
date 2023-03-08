@@ -26,7 +26,6 @@ const AutomobilesList = () => {
     }
 
     const response = await fetch(url, fetchConfig);
-    const data = await response.json();
 
     if (response.ok){
       getData()
