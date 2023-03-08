@@ -18,8 +18,8 @@ const AppointmentsList = () => {
     const response = await fetch('http://localhost:8100/api/automobiles/')
     if (response.ok){
       const data = await response.json();
-      setInventoriedAutos(data.autos[0])
-      console.log(inventoriedAutos)
+      setInventoriedAutos(data.autos)
+      console.log("inventory:", inventoriedAutos)
     }
   }
 
@@ -47,6 +47,23 @@ const AppointmentsList = () => {
     }
   }
 
+  const getVipAppointments = () => {
+    let arr = [...inventoriedAutos];
+    let vipArr = [];
+
+
+    const appointmentCars = {};
+    for (const appointment of appointments) {
+        appointmentCars[appointment.auto.vin] = appointment.auto.vin
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (appointmentCars[i].vin in inventoriedAutos) {
+            vipArr.push(appointmentCars[i]);
+        }
+    }
+    return vipArr;
+}
+
   return <>
         <div className='offset-2 col-8 bg-info'>
           <div className="shadow p-4 mt-4">
@@ -69,8 +86,8 @@ const AppointmentsList = () => {
 
                   <tbody className='bg-dark'>
                     {
-                    appointments.filter((appointment) => appointment.vin.includes(inventoriedAutos.vin))
-                    .map((appointment) => {
+                    getVipAppointments()
+                    .map(appointment => {
                         return (
 
 
