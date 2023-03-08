@@ -19,7 +19,7 @@ const AppointmentsList = () => {
     if (response.ok){
       const data = await response.json();
       setInventoriedAutos(data.autos)
-      console.log("inventory:", inventoriedAutos)
+      console.log("inventory:", data.autos)
     }
   }
 
@@ -48,26 +48,80 @@ const AppointmentsList = () => {
   }
 
   const getVipAppointments = () => {
-    let arr = [...inventoriedAutos];
+    let arr = [...appointments];
     let vipArr = [];
 
-
-    const appointmentCars = {};
-    for (const appointment of appointments) {
-        appointmentCars[appointment.auto.vin] = appointment.auto.vin
+    const autoVins = {};
+    for (const auto of inventoriedAutos) {
+        autoVins[auto.vin] = auto.vin
     }
     for (let i = 0; i < arr.length; i++) {
-        if (appointmentCars[i].vin in inventoriedAutos) {
-            vipArr.push(appointmentCars[i]);
+        if (arr[i].vin in autoVins) {
+            vipArr.push(arr[i]);
         }
     }
     return vipArr;
-}
+    }
 
-  return <>
+    const getRegAppointments = () => {
+        let arr = [...appointments];
+        let regArr = [];
+
+        const autoVins = {};
+        for (const auto of inventoriedAutos) {
+            autoVins[auto.vin] = auto.vin
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (!(arr[i].vin in autoVins)) {
+                regArr.push(arr[i]);
+            }
+        }
+        return regArr;
+    }
+
+
+
+  return (
         <div className='offset-2 col-8 bg-info'>
           <div className="shadow p-4 mt-4">
             <div className='flex justify-content-center'>
+              <h1 className='text-center text-white'>VIP Service appointments</h1>
+            </div>
+              <table className="table">
+                  <thead>
+                      <tr>
+                          <th className='text-center'>VIN</th>
+                          <th className='text-center'>Customer name</th>
+                          {/* <th className='text-center'>Date</th> */}
+                          <th className='text-center'>Time</th>
+                          <th className='text-center'>Technician</th>
+                          <th className='text-center'>Reason</th>
+                          <th className='text-center'>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody className='bg-light'>
+                    {
+                    getVipAppointments()
+                    .map(appointment => {
+                        return (
+                          <tr className='bg-light' key={appointment.id}>
+                              <td className='text-center'>{ appointment.vin }</td>
+                              <td className='text-center'>{ appointment.customer_name }</td>
+                              <td className='text-center'> { appointment.time }</td>
+                              <td className='text-center'>{ appointment.technician.name }</td>
+                              <td className='text-center'>{ appointment.reason }</td>
+                              <td className='text-center'>
+                                <button onClick={handleDelete} id={appointment.id} className="btn btn-danger">Cancel</button>
+                                <button onClick={handleDelete} id={appointment.id} className="btn btn-primary">Finished</button>
+                                </td>
+                          </tr>
+                          );
+                      })
+                      }
+                  </tbody>
+              </table>
+
+              <div className='flex justify-content-center'>
               <h1 className='text-center text-white'>Service appointments</h1>
             </div>
               <table className="table">
@@ -82,43 +136,12 @@ const AppointmentsList = () => {
                           <th className='text-center'>Action</th>
                       </tr>
                   </thead>
-                  VIP
-
-                  <tbody className='bg-dark'>
+                  <tbody className='bg-light'>
                     {
-                    getVipAppointments()
+                    getRegAppointments()
                     .map(appointment => {
                         return (
-
-
-                          <tr className='bg-dark' key={appointment.id}>
-                              <td className='text-center text-white'>{ appointment.vin }</td>
-                              <td className='text-center text-white'>{ appointment.customer_name }</td>
-                              <td className='text-center text-white'> { appointment.time }</td>
-                              <td className='text-center text-white'>{ appointment.technician.name }</td>
-                              <td className='text-center text-white'>{ appointment.reason }</td>
-                              <td className='text-center text-white'>
-                                <button onClick={handleDelete} id={appointment.id} className="btn btn-danger">Cancel</button>
-                                <button onClick={handleDelete} id={appointment.id} className="btn btn-primary">Finished</button>
-                                </td>
-
-                          </tr>
-                          );
-                      })
-                      }
-                  </tbody>
-
-
-
-                        ###
-
-
-
-                  <tbody>
-                      {
-                      appointments.map(appointment => {
-                          return (
-                          <tr className='bg-light' key={appointment.id}>
+                          <tr className='' key={appointment.id}>
                               <td className='text-center'>{ appointment.vin }</td>
                               <td className='text-center'>{ appointment.customer_name }</td>
                               <td className='text-center'> { appointment.time }</td>
@@ -128,16 +151,19 @@ const AppointmentsList = () => {
                                 <button onClick={handleDelete} id={appointment.id} className="btn btn-danger">Cancel</button>
                                 <button onClick={handleDelete} id={appointment.id} className="btn btn-primary">Finished</button>
                                 </td>
-
                           </tr>
                           );
                       })
                       }
                   </tbody>
               </table>
+
+
           </div>
           </div>
-    </>
+
+
+  )
 }
 
 export default AppointmentsList;
