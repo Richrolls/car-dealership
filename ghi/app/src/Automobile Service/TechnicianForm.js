@@ -9,7 +9,6 @@ const TechnicianForm = () => {
 
     data.name = name;
     data.employee_number = employeeNumber;
-    data.picture_url = pictureUrl;
 
 
     console.log(data);
@@ -26,29 +25,22 @@ const TechnicianForm = () => {
     const response = await fetch(techniciansUrl, fetchConfig);
     if (response.ok) {
       const newTechnician = await response.json();
-      console.log(newTechnician);
+      console.log(newTechnician)
       setName("");
       setEmployeeNumber("");
-      setPictureUrl("");
     }
   };
-  const [name, setName] = useState("");
-  const [employeeNumber, setEmployeeNumber] = useState("");
-  const [pictureUrl, setPictureUrl] = useState("");
 
+  const [name, setName] = useState("");
   const handleNameChange = (event) => {
     const value = event.target.value;
     setName(value);
   };
 
+  const [employeeNumber, setEmployeeNumber] = useState("");
   const handleEmployeeNumberChange = (event) => {
     const value = event.target.value;
     setEmployeeNumber(value);
-  };
-
-  const handlePictureUrlChange = (event) => {
-    const value = event.target.value;
-    setPictureUrl(value);
   };
 
 
@@ -87,19 +79,6 @@ const TechnicianForm = () => {
                 name="employeeNumber"
               />
               <label htmlFor="employeeNumber">Employee Number</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                value={pictureUrl}
-                onChange={handlePictureUrlChange}
-                placeholder="pictureUrl"
-                required
-                type="text"
-                id="pictureUrl"
-                className="form-control"
-                name="pictureUrl"
-              />
-              <label htmlFor="pictureUrl">Picture Url</label>
             </div>
             <button className="btn btn-primary">Create</button>
           </form>

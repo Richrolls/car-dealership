@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 from django.views.decorators.http import require_http_methods
-from common.json import ModelEncoder, DateEncoder
+from common.json import ModelEncoder
 from .models import Technician, Appointment, AutomobileVO
 
 
@@ -14,29 +14,20 @@ class TechnicianListEncoder(ModelEncoder):
         "id",
     ]
 
-class TechnicianDetailEncoder(ModelEncoder):
-    model = Technician
-    properties = [
-        "name",
-        "employee_number",
-        "picture_url",
-    ]
-
-
 class AppointmentListEncoder(ModelEncoder):
-    model = Technician
+    model = Appointment
     properties = [
         "customer_name",
-        "date",
+        # "date",
         "time",
-        "reason"
+        "reason",
+        "vin",
+        "technician",
     ]
+    encoders = {
+        "technician": TechnicianListEncoder(),
+    }
 
-    def get_extra_data(self, o):
-        return {"vin": o.automobile.vin}
-
-    def get_extra_data(self, o):
-        return {"technician": o.technician.name}
 
 
 
@@ -59,7 +50,7 @@ def api_list_technicians(request):
         technician = Technician.objects.create(**content)
         return JsonResponse(
             technician,
-            encoder=TechnicianDetailEncoder,
+            encoder=TechnicianListEncoder,
             safe=False,
         )
 
@@ -83,10 +74,6 @@ def api_list_appointments(request):
         technician_id = content["technician_id"]
         technician = Technician.objects.get(id=technician_id)
         content["technician"] = technician
-
-        automobile_id = content["automobile_id"]
-        automobile = AutomobileVO.objects.get(id=automobile_id)
-        content["automobile"] = automobile
 
         # except Technician.DoesNotExist:
         #     return JsonResponse(
