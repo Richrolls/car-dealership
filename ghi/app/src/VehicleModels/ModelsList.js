@@ -26,7 +26,6 @@ const ModelList = () => {
     }
 
     const response = await fetch(url, fetchConfig);
-    const data = await response.json();
 
     if (response.ok){
       getData()
@@ -56,7 +55,7 @@ const ModelList = () => {
                           <tr className='bg-light' key={model.id}>
                               <td className='text-center'>{ model.name }</td>
                               <td className='text-center'>{ model.manufacturer.name }</td>
-                              <td className='text-center'><img src={ model.picture_url } width={400} height={200} /></td>
+                              <td className='text-center'><img src={ model.picture_url } alt='' width={400} height={200} /></td>
                               <td className='text-center'><button onClick={handleDelete} id={model.id} className="btn btn-danger">Delete</button></td>
                           </tr>
                           );

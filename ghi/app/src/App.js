@@ -19,10 +19,9 @@ import AppointmentsList from './Automobile Service/AppointmentsList';
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
+    <Nav />
       <div className="container">
         <Routes>
-
           <Route path="/" element={<MainPage />} />
           <Route path="/models">
             <Route index element={<ModelList />} />

@@ -1,37 +1,36 @@
 import { useState, useEffect } from 'react'
 
 const SalesList = () => {
-  const [sales, setSales] = useState([])
+	const [sales, setSales] = useState([])
 
-  const getData = async () => {
-    const response = await fetch('http://localhost:8090/api/sales/')
-    if (response.ok){
-      const data = await response.json();
-      setSales(data.sales)
-    }
-  }
+	const getData = async () => {
+		const response = await fetch('http://localhost:8090/api/sales/')
+		if (response.ok){
+		const data = await response.json();
+		setSales(data.sales)
+		}
+	}
 
-  useEffect(()=> {
-    getData()
-  }, [])
+	useEffect(()=> {
+		getData()
+	}, [])
 
-  const handleDelete = async (e) => {
-    const url = `http://localhost:8090/api/sales/${e.target.id}`;
+	const handleDelete = async (e) => {
+		const url = `http://localhost:8090/api/sales/${e.target.id}`;
 
-    const fetchConfig = {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }
+		const fetchConfig = {
+		method: "delete",
+		headers: {
+			"Content-Type": "application/json"
+		}
+		}
 
-    const response = await fetch(url, fetchConfig);
-    const data = await response.json();
+		const response = await fetch(url, fetchConfig);
 
-    if (response.ok){
-      getData()
-    }
-  }
+		if (response.ok){
+		getData()
+		}
+	}
 
   return <>
         <div className='offset-2 col-8 bg-info'>
@@ -68,7 +67,7 @@ const SalesList = () => {
                   </tbody>
               </table>
           </div>
-          </div>
+        </div>
     </>
 }
 

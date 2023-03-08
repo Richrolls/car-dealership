@@ -27,7 +27,6 @@ const ManufacturersList = () => {
     };
 
     const resp = await fetch(url, fetchConfigs);
-    const data = await resp.json();
 
     setManufacturers(manufacturers.filter((manufacturer) => String(manufacturer.id) !== e.target.id));
   };
