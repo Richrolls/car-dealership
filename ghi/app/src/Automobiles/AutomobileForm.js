@@ -25,8 +25,8 @@ const AutomobileForm = () => {
         "Content-Type": "application/json",
       },
     };
-
     const response = await fetch(automobileUrl, fetchConfig);
+
     if (response.ok) {
       setColor("");
       setYear("");

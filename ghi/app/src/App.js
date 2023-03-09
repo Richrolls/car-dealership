@@ -1,25 +1,25 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage';
-import ModelForm from './VehicleModels/ModelForm'
-import ModelList from './VehicleModels/ModelsList';
-import Nav from './Nav';
-import ManufacturersList from './Manufacturers/ManufacturersList';
-import ManufacturerForm from './Manufacturers/ManufacturerForm';
-import AutomobileForm from './Automobiles/AutomobileForm';
-import AutoMobilesList from './Automobiles/AutomobilesList';
-import CustomerForm from './Sales/CustomerForm';
-import SalesPersonForm from './Sales/SalesPersonForm';
-import SaleForm from './Sales/SaleForm';
-import SalesList from './Sales/SalesList';
-import TechnicianForm from './Automobile Service/TechnicianForm';
-import SalesPersonSaleList from './Sales/SalesPersonSalesList';
-import AppointmentForm from './Automobile Service/AppointmentForm';
-import AppointmentsList from './Automobile Service/AppointmentsList';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import ModelForm from "./VehicleModels/ModelForm";
+import ModelList from "./VehicleModels/ModelsList";
+import Nav from "./Nav";
+import ManufacturersList from "./Manufacturers/ManufacturersList";
+import ManufacturerForm from "./Manufacturers/ManufacturerForm";
+import AutomobileForm from "./Automobiles/AutomobileForm";
+import AutoMobilesList from "./Automobiles/AutomobilesList";
+import CustomerForm from "./Sales/CustomerForm";
+import SalesPersonForm from "./Sales/SalesPersonForm";
+import SaleForm from "./Sales/SaleForm";
+import SalesList from "./Sales/SalesList";
+import TechnicianForm from "./Automobile Service/TechnicianForm";
+import SalesPersonSaleList from "./Sales/SalesPersonSalesList";
+import AppointmentForm from "./Automobile Service/AppointmentForm";
+import AppointmentsList from "./Automobile Service/AppointmentsList";
 
 function App() {
   return (
     <BrowserRouter>
-    <Nav />
+      <Nav />
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -40,7 +40,7 @@ function App() {
           </Route>
           <Route path="/salespeople">
             <Route path="new" element={<SalesPersonForm />} />
-            <Route path='sales' element={< SalesPersonSaleList/>} />
+            <Route path="sales" element={<SalesPersonSaleList />} />
           </Route>
           <Route path="/sales">
             <Route index element={<SalesList />} />
