@@ -45,7 +45,7 @@ function Nav() {
                 Sales People
               </a>
               <ul className="dropdown-menu">
-                <li><Link className="dropdown-item disabled" to="/salespeople/new">Add a Sales Person</Link></li>
+                <li><Link className="dropdown-item" to="/salespeople/new">Add a Sales Person</Link></li>
                 <li><Link className="dropdown-item" to="/salespeople/sales">View Sales Person's Sales</Link></li>
               </ul>
             </li>
