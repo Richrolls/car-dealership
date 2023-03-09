@@ -4,7 +4,7 @@ function AppointmentForm(){
     const [technicians, setTechnicians] = useState([])
     const [formData, setFormData] = useState({
         customer_name: '',
-        // date: '',
+        date: '',
         time: '',
         reason: '',
         vin: '',
