@@ -68,3 +68,29 @@ def api_list_appointments(request):
             encoder=AppointmentListEncoder,
             safe=False,
         )
+
+@require_http_methods(["GET", "DELETE"])
+def api_appointment(request, id):
+    if request.method == "GET":
+        try:
+            appointment = Appointment.objects.get(id=id)
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentListEncoder,
+                safe=False
+            )
+        except Appointment.DoesNotExist:
+            response = JsonResponse({"message": "Appointment does not exist."})
+            response.status_code = 404
+            return response
+    else:
+        try:
+            sale = Appointment.objects.get(id=id)
+            sale.delete()
+            return JsonResponse(
+                sale,
+                encoder=AppointmentListEncoder,
+                safe=False,
+            )
+        except Appointment.DoesNotExist:
+            return JsonResponse({"message": "Appointment does not exist."})

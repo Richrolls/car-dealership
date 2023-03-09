@@ -46,7 +46,6 @@ const ModelList = () => {
                           <th className='text-center'>Manufacturer</th>
                           <th className='text-center'>Picture</th>
                           <th className='text-center'>Delete</th>
-
                       </tr>
                   </thead>
                   <tbody>

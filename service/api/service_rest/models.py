@@ -35,4 +35,4 @@ class Appointment(models.Model):
 
 
     def get_api_url(self):
-        return reverse("", kwargs={"id": self.id})
+        return reverse("api_appointment", kwargs={"id": self.id})

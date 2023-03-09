@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const ManufacturerForm = () => {
   const [name, setName] = useState("");
@@ -21,7 +21,6 @@ const ManufacturerForm = () => {
 
     const response = await fetch(manufacturersUrl, fetchConfig);
     if (response.ok) {
-      const newManufacturer = await response.json();
       setName("");
     }
   };
@@ -30,11 +29,6 @@ const ManufacturerForm = () => {
     const value = event.target.value;
     setName(value);
   };
-
-
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
 
   return (
     <div className="my-5 container">

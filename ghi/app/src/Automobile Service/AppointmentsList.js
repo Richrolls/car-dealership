@@ -15,10 +15,10 @@ const AppointmentsList = () => {
   }
 
   const getInventoriedAutosData = async () => {
-    const response = await fetch('http://localhost:8100/api/automobiles/')
+    const response = await fetch('http://localhost:8080/api/automobiles/')
     if (response.ok){
       const data = await response.json();
-      setInventoriedAutos(data.autos)
+      setInventoriedAutos(data.automobiles)
     }
   }
 
@@ -29,7 +29,7 @@ const AppointmentsList = () => {
 
 
   const handleDelete = async (e) => {
-    const url = `http://localhost:8090/api/appointments/${e.target.id}`;
+    const url = `http://localhost:8080/api/appointments/${e.target.id}`;
 
     const fetchConfig = {
       method: "delete",
@@ -39,7 +39,7 @@ const AppointmentsList = () => {
     }
 
     const response = await fetch(url, fetchConfig);
-    // const data = await response.json();
+
 
     if (response.ok){
       getData()
@@ -119,7 +119,6 @@ const AppointmentsList = () => {
                       }
                   </tbody>
               </table>
-
               <div className='flex justify-content-center'>
               <h1 className='text-center text-white'>Service appointments</h1>
             </div>
@@ -156,8 +155,6 @@ const AppointmentsList = () => {
                       }
                   </tbody>
               </table>
-
-
           </div>
           </div>
 
