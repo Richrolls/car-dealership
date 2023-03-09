@@ -16,6 +16,7 @@ def api_automobiles(request):
         safe=False,
     )
 
+
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
 
@@ -27,7 +28,6 @@ def api_list_technicians(request):
         )
     else:
         content = json.loads(request.body)
-
         technician = Technician.objects.create(**content)
         return JsonResponse(
             technician,
@@ -37,12 +37,10 @@ def api_list_technicians(request):
 
 
 
-
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
 
     if request.method == "GET":
-
         appointments = Appointment.objects.all()
         return JsonResponse(
             {"appointments": appointments},
@@ -50,24 +48,22 @@ def api_list_appointments(request):
         )
     else:
         content = json.loads(request.body)
-
         try:
             technician_id = content["technician_id"]
             technician = Technician.objects.get(id=technician_id)
             content["technician"] = technician
-
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid Technician"},
                 status=404,
             )
-
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
             encoder=AppointmentListEncoder,
             safe=False,
         )
+
 
 @require_http_methods(["GET", "DELETE"])
 def api_appointment(request, id):

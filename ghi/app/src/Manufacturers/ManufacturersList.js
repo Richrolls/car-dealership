@@ -37,11 +37,6 @@ const ManufacturersList = () => {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Manufacturers</h1>
-            <h2>
-              <Link to="/manufacturers/new" className="btn btn-primary">
-                Create a Manufacturer
-              </Link>
-            </h2>
             <table className="table table-striped">
               <thead>
                 <tr>
