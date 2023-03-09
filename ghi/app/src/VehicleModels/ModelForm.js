@@ -24,7 +24,6 @@ function ModelForm(){
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-
         const vehicleModelsUrl = 'http://localhost:8100/api/models/'
         const fetchConfig = {
             method: "post",

@@ -27,7 +27,6 @@ const ModelList = () => {
 
     const response = await fetch(url, fetchConfig);
 
-
     if (response.ok){
       getData()
     }
@@ -65,7 +64,7 @@ const ModelList = () => {
               </table>
           </div>
           </div>
-    </>
-}
+      </>
+    }
 
-export default ModelList
+export default ModelList;

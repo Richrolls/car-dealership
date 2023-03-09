@@ -28,7 +28,6 @@ const AppointmentsList = () => {
     getInventoriedAutosData()
   }, [])
 
-
   const handleDelete = async (e) => {
     const url = `http://localhost:8080/api/appointments/${e.target.id}`;
 
@@ -41,11 +40,11 @@ const AppointmentsList = () => {
 
     const response = await fetch(url, fetchConfig);
 
-
     if (response.ok){
       getData()
     }
   }
+
 
   const getVipAppointments = () => {
     let arr = [...appointments];
@@ -62,6 +61,7 @@ const AppointmentsList = () => {
     }
     return vipArr;
     }
+
 
     const getRegAppointments = () => {
         let arr = [...appointments];
@@ -84,12 +84,11 @@ const AppointmentsList = () => {
       };
 
 
-
   return (
         <div className='offset-2 col-8 bg-info'>
           <div className="shadow p-4 mt-4">
             <div className='flex justify-content-center'>
-                <input onChange={handleFilterChange} />
+                <input placeholder="Search VIN" onChange={handleFilterChange} />
               <h1 className='text-center text-white'>VIP Service appointments</h1>
             </div>
               <table className="table">
@@ -167,8 +166,6 @@ const AppointmentsList = () => {
               </table>
           </div>
           </div>
-
-
   )
 }
 
