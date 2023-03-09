@@ -11,7 +11,7 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" to='/models' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle text-white" to='/models' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Models
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -21,7 +21,7 @@ function Nav() {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" to='/manufacturers' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle text-white" to='/manufacturers' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Manufacturers
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -31,7 +31,7 @@ function Nav() {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" to='/automobiles' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle text-white" to='/automobiles' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Automobiles
               </a>
               <ul className="dropdown-menu">
@@ -41,7 +41,7 @@ function Nav() {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" to='/salespeople' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle text-white" to='/salespeople' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sales People
               </a>
               <ul className="dropdown-menu">
@@ -51,7 +51,7 @@ function Nav() {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" to='/sales' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle text-white" to='/sales' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sales
               </a>
               <ul className="dropdown-menu">
@@ -61,7 +61,7 @@ function Nav() {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" to='/appointments' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="nav-link dropdown-toggle text-white" to='/appointments' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Appointments
               </a>
               <ul className="dropdown-menu" aria-labelledby='appointments'>
@@ -70,10 +70,10 @@ function Nav() {
               </ul>
             </li>
             <li className='nav-item'>
-              <Link className="nav-link" to="/customers/new">Add a Customer</Link>
+              <Link className="nav-link text-white" to="/customers/new">Add a Customer</Link>
             </li>
             <li className='nav-item'>
-              <Link className="nav-link" to="/technicians/new">Add a technician</Link>
+              <Link className="nav-link text-white" to="/technicians/new">Add a technician</Link>
             </li>
 
 

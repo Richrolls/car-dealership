@@ -78,7 +78,7 @@ def api_sales(request):
             content["sales_person"] = sales_person
         except SalesPerson.DoesNotExist:
             return JsonResponse(
-                {"message": "Salesperson id does not exist."},
+                {"message": "Sales person id does not exist."},
                 status=404,
             )
         try:

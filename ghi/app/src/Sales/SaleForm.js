@@ -32,7 +32,7 @@ function SaleForm(){
         }
     }
 
-    const getSalespersonData = async () => {
+    const getSalesPersonData = async () => {
         const url = 'http://localhost:8090/api/salespeople/';
         const response = await fetch(url);
 
@@ -54,14 +54,13 @@ function SaleForm(){
 
     useEffect(() => {
         getAutomobileData();
-        getSalespersonData();
+        getSalesPersonData();
         getCustomerData();
         getSoldAutomobileData();
     }, [])
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-
         const salesUrl = 'http://localhost:8090/api/sales/'
         const fetchConfig = {
             method: "post",
@@ -80,7 +79,7 @@ function SaleForm(){
                 potential_customer_id: '',
             })
         }
-        window.location.reload();
+        window.location.reload()
     }
 
     const handleFormChange = (e) => {
