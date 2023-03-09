@@ -42,7 +42,6 @@ const ManufacturersList = () => {
                 Create a Manufacturer
               </Link>
             </h2>
-
             <table className="table table-striped">
               <thead>
                 <tr>
@@ -74,4 +73,5 @@ const ManufacturersList = () => {
     </>
   );
 };
+
 export default ManufacturersList;

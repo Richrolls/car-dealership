@@ -5,11 +5,8 @@ const ManufacturerForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const data = {};
-
     data.name = name;
-
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
     const fetchConfig = {
       method: "post",

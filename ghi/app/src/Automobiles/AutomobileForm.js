@@ -17,8 +17,6 @@ const AutomobileForm = () => {
     data.vin = vin;
     data.model_id = model_id;
 
-
-
     const automobileUrl = "http://localhost:8100/api/automobiles/";
     const fetchConfig = {
       method: "post",

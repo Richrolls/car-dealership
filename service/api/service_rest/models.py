@@ -13,7 +13,7 @@ class AutomobileVO(models.Model):
 
 class Technician(models.Model):
     name = models.CharField(max_length=200)
-    employee_number = models.CharField(max_length=100)
+    employee_number = models.CharField(max_length=9)
 
 
     def get_api_url(self):
@@ -22,7 +22,7 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
     customer_name = models.CharField(max_length=200)
-    date = models.DateTimeField(null=True)
+    date = models.DateTimeField()
     time = models.CharField(max_length=50)
     reason = models.CharField(max_length=200)
     vin = models.CharField(max_length=17)

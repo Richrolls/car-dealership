@@ -28,7 +28,6 @@ const AppointmentsList = () => {
     getInventoriedAutosData()
   }, [])
 
-
   const handleDelete = async (e) => {
     const url = `http://localhost:8080/api/appointments/${e.target.id}`;
 
@@ -41,11 +40,11 @@ const AppointmentsList = () => {
 
     const response = await fetch(url, fetchConfig);
 
-
     if (response.ok){
       getData()
     }
   }
+
 
   const getVipAppointments = () => {
     let arr = [...appointments];
@@ -62,6 +61,7 @@ const AppointmentsList = () => {
     }
     return vipArr;
     }
+
 
     const getRegAppointments = () => {
         let arr = [...appointments];
@@ -82,7 +82,6 @@ const AppointmentsList = () => {
     const handleFilterChange = (e) => {
         setFilterTerm(e.target.value);
       };
-
 
 
   return (
@@ -167,8 +166,6 @@ const AppointmentsList = () => {
               </table>
           </div>
           </div>
-
-
   )
 }
 

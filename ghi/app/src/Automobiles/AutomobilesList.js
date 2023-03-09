@@ -67,7 +67,7 @@ const AutomobilesList = () => {
               </table>
           </div>
           </div>
-    </>
-}
+      </>
+    }
 
 export default AutomobilesList
