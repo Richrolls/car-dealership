@@ -88,7 +88,7 @@ const AppointmentsList = () => {
         <div className='offset-2 col-8 bg-info'>
           <div className="shadow p-4 mt-4">
             <div className='flex justify-content-center'>
-                <input onChange={handleFilterChange} />
+                <input placeholder="Search VIN" onChange={handleFilterChange} />
               <h1 className='text-center text-white'>VIP Service appointments</h1>
             </div>
               <table className="table">
