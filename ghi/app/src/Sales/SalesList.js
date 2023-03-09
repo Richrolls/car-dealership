@@ -7,28 +7,26 @@ const SalesList = () => {
 		const response = await fetch('http://localhost:8090/api/sales/')
 		if (response.ok){
 		const data = await response.json();
-		setSales(data.sales)
+		setSales(data.sales);
 		}
 	}
 
 	useEffect(()=> {
-		getData()
+		getData();
 	}, [])
 
 	const handleDelete = async (e) => {
 		const url = `http://localhost:8090/api/sales/${e.target.id}`;
 
 		const fetchConfig = {
-		method: "delete",
-		headers: {
-			"Content-Type": "application/json"
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            }
 		}
-		}
-
 		const response = await fetch(url, fetchConfig);
-
-		if (response.ok){
-		getData()
+		if (response.ok) {
+		    getData();
 		}
 	}
 

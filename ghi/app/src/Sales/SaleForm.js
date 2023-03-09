@@ -15,7 +15,7 @@ function SaleForm(){
     const getSoldAutomobileData = async () => {
         const url = 'http://localhost:8090/api/sales/';
         const response = await fetch(url);
-
+        
         if (response.ok) {
             const data = await response.json();
             setSoldAutomobiles(data.sales);
@@ -79,7 +79,7 @@ function SaleForm(){
                 potential_customer_id: '',
             })
         }
-        window.location.reload()
+        window.location.reload();
     }
 
     const handleFormChange = (e) => {

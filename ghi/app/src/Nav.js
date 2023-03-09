@@ -19,7 +19,6 @@ function Nav() {
                 <li><Link className="dropdown-item" to="/models/new">Add a Model</Link></li>
               </ul>
             </li>
-
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle text-white" to='/manufacturers' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Manufacturers
@@ -29,7 +28,6 @@ function Nav() {
                 <li><Link className="dropdown-item" to="/manufacturers/new">Add a Manufacturer</Link></li>
               </ul>
             </li>
-
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle text-white" to='/automobiles' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Automobiles
@@ -39,7 +37,6 @@ function Nav() {
                 <li><Link className="dropdown-item" to="/automobiles/new">Add an Automobile</Link></li>
               </ul>
             </li>
-
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle text-white" to='/salespeople' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sales People
@@ -49,7 +46,6 @@ function Nav() {
                 <li><Link className="dropdown-item" to="/salespeople/sales">View Sales Person's Sales</Link></li>
               </ul>
             </li>
-
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle text-white" to='/sales' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sales
@@ -59,7 +55,6 @@ function Nav() {
                 <li><Link className="dropdown-item" to="/sales/new">Add a Sale</Link></li>
               </ul>
             </li>
-
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle text-white" to='/appointments' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Appointments
@@ -75,10 +70,6 @@ function Nav() {
             <li className='nav-item'>
               <Link className="nav-link text-white" to="/technicians/new">Add a technician</Link>
             </li>
-
-
-
-
           </ul>
         </div>
       </div>

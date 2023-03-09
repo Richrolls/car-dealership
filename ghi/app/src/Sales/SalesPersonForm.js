@@ -8,7 +8,6 @@ function SalesPersonForm(){
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-
         const customersUrl = 'http://localhost:8090/api/salespeople/'
         const fetchConfig = {
             method: "post",
@@ -18,7 +17,6 @@ function SalesPersonForm(){
             }
         };
         const response = await fetch(customersUrl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 name: '',
@@ -32,7 +30,6 @@ function SalesPersonForm(){
         const inputName = e.target.name;
         setFormData({
             ...formData,
-
             [inputName]: value
         });
     }
@@ -51,7 +48,6 @@ function SalesPersonForm(){
                             <input onChange={handleFormChange} value={formData.employee_id} placeholder="Address" required type='text' name='employee_id' id='employee_id' className='form-control' />
                             <label htmlFor='employee_id'>Employee ID</label>
                         </div>
-
                         <button className='btn btn-primary'>Create</button>
                     </form>
                 </div>
