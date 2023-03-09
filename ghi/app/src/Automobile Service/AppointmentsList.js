@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const AppointmentsList = () => {
+  const [filterTerm, setFilterTerm] = useState("");
   const [appointments, setAppointments] = useState([])
   const [inventoriedAutos, setInventoriedAutos] = useState([]);
 
@@ -78,12 +79,17 @@ const AppointmentsList = () => {
         return regArr;
     }
 
+    const handleFilterChange = (e) => {
+        setFilterTerm(e.target.value);
+      };
+
 
 
   return (
         <div className='offset-2 col-8 bg-info'>
           <div className="shadow p-4 mt-4">
             <div className='flex justify-content-center'>
+                <input onChange={handleFilterChange} />
               <h1 className='text-center text-white'>VIP Service appointments</h1>
             </div>
               <table className="table">
@@ -101,7 +107,8 @@ const AppointmentsList = () => {
                   <tbody className='bg-light'>
                     {
                     getVipAppointments()
-                    .map(appointment => {
+                    .filter(appointment => appointment.vin.includes(filterTerm))
+                    .map((appointment) => {
                         return (
                           <tr className='bg-light' key={appointment.id}>
                               <td className='text-center'>{ appointment.vin }</td>
@@ -116,7 +123,7 @@ const AppointmentsList = () => {
                           </tr>
                           );
                       })
-                      }
+                    }
                   </tbody>
               </table>
               <div className='flex justify-content-center'>
@@ -137,7 +144,8 @@ const AppointmentsList = () => {
                   <tbody className='bg-light'>
                     {
                     getRegAppointments()
-                    .map(appointment => {
+                    .filter(appointment => appointment.vin.includes(filterTerm))
+                    .map((appointment) => {
                         return (
                           <tr className='' key={appointment.id}>
                               <td className='text-center'>{ appointment.vin }</td>
