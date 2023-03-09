@@ -41,7 +41,7 @@ function AppointmentForm(){
         if (response.ok) {
             setFormData({
                 customer_name: '',
-                // date: '',
+                date: '',
                 time: '',
                 reason: '',
                 vin: '',
@@ -70,10 +70,10 @@ function AppointmentForm(){
                             <input onChange={handleFormChange} value={formData.customer_name} placeholder="customer_name" required type='text' name='customer_name' id='customer_name' className='form-control' />
                             <label htmlFor='customer_name'>Customer Name</label>
                         </div>
-                        {/* <div className='form-floating mb-3'>
-                            <input onChange={handleFormChange} value={formData.date} placeholder="date" required type='text' name='date' id='date' className='form-control' />
+                        <div className='form-floating mb-3'>
+                            <input onChange={handleFormChange} value={formData.date} placeholder="date" required type='date' name='date' id='date' className='form-control' />
                             <label htmlFor='date'>Date</label>
-                        </div> */}
+                        </div>
                         <div className='form-floating mb-3'>
                             <input onChange={handleFormChange} value={formData.time} placeholder="time" required type='text' name='time' id='time' className='form-control' />
                             <label htmlFor='time'>Appointment time</label>

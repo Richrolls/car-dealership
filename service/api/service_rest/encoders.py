@@ -21,7 +21,7 @@ class AppointmentListEncoder(ModelEncoder):
     properties = [
         "id",
         "customer_name",
-        # "date",
+        "date",
         "time",
         "reason",
         "vin",

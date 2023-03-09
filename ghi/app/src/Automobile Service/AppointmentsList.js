@@ -91,7 +91,7 @@ const AppointmentsList = () => {
                       <tr>
                           <th className='text-center'>VIN</th>
                           <th className='text-center'>Customer name</th>
-                          {/* <th className='text-center'>Date</th> */}
+                          <th className='text-center'>Date</th>
                           <th className='text-center'>Time</th>
                           <th className='text-center'>Technician</th>
                           <th className='text-center'>Reason</th>
@@ -106,6 +106,7 @@ const AppointmentsList = () => {
                           <tr className='bg-light' key={appointment.id}>
                               <td className='text-center'>{ appointment.vin }</td>
                               <td className='text-center'>{ appointment.customer_name }</td>
+                              <td className='text-center'> { new Date(appointment.date).toLocaleDateString() }</td>
                               <td className='text-center'> { appointment.time }</td>
                               <td className='text-center'>{ appointment.technician.name }</td>
                               <td className='text-center'>{ appointment.reason }</td>
@@ -127,7 +128,7 @@ const AppointmentsList = () => {
                       <tr>
                           <th className='text-center'>VIN</th>
                           <th className='text-center'>Customer name</th>
-                          {/* <th className='text-center'>Date</th> */}
+                          <th className='text-center'>Date</th>
                           <th className='text-center'>Time</th>
                           <th className='text-center'>Technician</th>
                           <th className='text-center'>Reason</th>
@@ -142,6 +143,7 @@ const AppointmentsList = () => {
                           <tr className='' key={appointment.id}>
                               <td className='text-center'>{ appointment.vin }</td>
                               <td className='text-center'>{ appointment.customer_name }</td>
+                              <td className='text-center'> { new Date(appointment.date).toLocaleDateString() }</td>
                               <td className='text-center'> { appointment.time }</td>
                               <td className='text-center'>{ appointment.technician.name }</td>
                               <td className='text-center'>{ appointment.reason }</td>
