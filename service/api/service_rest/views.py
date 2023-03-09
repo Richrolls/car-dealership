@@ -3,14 +3,23 @@ from django.http import JsonResponse
 import json
 from django.views.decorators.http import require_http_methods
 from .models import Technician, Appointment, AutomobileVO
-from .encoders import TechnicianListEncoder, AppointmentListEncoder
+from .encoders import TechnicianListEncoder, AppointmentListEncoder, AutomobileVOEncoder
 
+
+
+@require_http_methods(["GET"])
+def api_automobiles(request):
+    automobiles = AutomobileVO.objects.all()
+    return JsonResponse(
+        {"automobiles": automobiles},
+        encoder=AutomobileVOEncoder,
+        safe=False,
+    )
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
 
     if request.method == "GET":
-
         technicians = Technician.objects.all()
         return JsonResponse(
             {"technicians": technicians},
@@ -42,16 +51,16 @@ def api_list_appointments(request):
     else:
         content = json.loads(request.body)
 
-        # try:
-        technician_id = content["technician_id"]
-        technician = Technician.objects.get(id=technician_id)
-        content["technician"] = technician
+        try:
+            technician_id = content["technician_id"]
+            technician = Technician.objects.get(id=technician_id)
+            content["technician"] = technician
 
-        # except Technician.DoesNotExist:
-        #     return JsonResponse(
-        #         {"message": "Invalid Technician"},
-        #         status=400,
-        #     )
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid Technician"},
+                status=404,
+            )
 
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
