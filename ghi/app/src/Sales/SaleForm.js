@@ -23,12 +23,12 @@ function SaleForm(){
     }
 
     const getAutomobileData = async () => {
-        const url = 'http://localhost:8100/api/automobiles/';
+        const url = 'http://localhost:8090/api/automobiles/';
         const response = await fetch(url);
 
         if (response.ok) {
             const data = await response.json();
-            setAutomobiles(data.autos);
+            setAutomobiles(data.automobiles);
         }
     }
 
@@ -100,7 +100,7 @@ function SaleForm(){
             soldCars[soldAutomobile.automobile.import_href] = soldAutomobile.automobile.import_href
         }
         for (let i = 0; i < arr.length; i++) {
-            if (automobiles[i].href in soldCars) {
+            if (automobiles[i].import_href in soldCars) {
                 delete arr[i];
             }
         }

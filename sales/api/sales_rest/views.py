@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 import json
 
 from .models import AutomobileVO, SaleRecord, SalesPerson, PotentialCustomer
-from.encoders import SaleRecordEncoder, SalesPersonEncoder, PotentialCustomerEncoder
+from.encoders import SaleRecordEncoder, SalesPersonEncoder, PotentialCustomerEncoder, AutomobileVOEncoder
 
 
 @require_http_methods(["GET", "POST"])
@@ -41,6 +41,16 @@ def api_potential_customers(request):
             encoder=PotentialCustomerEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["GET"])
+def api_automobiles(request):
+    automobiles = AutomobileVO.objects.all()
+    return JsonResponse(
+        {"automobiles": automobiles},
+        encoder=AutomobileVOEncoder,
+        safe=False,
+    )
 
 
 @require_http_methods(["GET", "POST"])
