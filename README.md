@@ -7,7 +7,7 @@ Team:
 
 ## Design
 
-The AutomobileVO, Technician and Appointment models together form the 'Service' Bounded Context.
+The AutomobileVO, Technician and Appointment models together form the 'Service' Bounded Context
 
 The AutomobileVO, SalesPerson, PotentialCustomer, and SaleRecord models together form the 'Sales' Bounded Context.
 
