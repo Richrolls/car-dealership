@@ -7,6 +7,10 @@ Team:
 
 ## Design
 
+The AutomobileVO, Technician and Appointment models together form the 'Service' Bounded Context.
+
+The AutomobileVO, SalesPerson, PotentialCustomer, and SaleRecord models together form the 'Sales' Bounded Context.
+
 ## Service microservice
 
 We have the Technician, Appointment, and AutomobileVO models. The Technician is a simple model, and Appointment is a model that uses Technician as a Foreign Key. the Technician and Appointment models are used to make my forms and list pages.
