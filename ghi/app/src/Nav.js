@@ -20,7 +20,7 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle text-white"
                 to="/manufacturers"
@@ -103,13 +103,13 @@ function Nav() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to="/salespeople/new">
-                    Add a Sales Person
+                  <Link className="dropdown-item" to="/salespeople/sales">
+                    View Sales Person's Sales
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/salespeople/sales">
-                    View Sales Person's Sales
+                  <Link className="dropdown-item" to="/salespeople/new">
+                    Add a Sales Person
                   </Link>
                 </li>
               </ul>
