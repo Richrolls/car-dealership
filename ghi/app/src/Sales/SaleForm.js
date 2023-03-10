@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 function SaleForm() {
   const [automobiles, setAutomobiles] = useState([]);
-  const [voAutomobiles, setVOAutomobiles] = useState([]);
   const [salesPeople, setSalesPeople] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [soldAutomobiles, setSoldAutomobiles] = useState([]);
