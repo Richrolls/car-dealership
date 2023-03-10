@@ -108,10 +108,7 @@ const AppointmentsList = () => {
                   <tr className="bg-light" key={appointment.id}>
                     <td className="text-center">{appointment.vin}</td>
                     <td className="text-center">{appointment.customer_name}</td>
-                    <td className="text-center">
-                      {" "}
-                      {new Date(appointment.date).toLocaleDateString()}
-                    </td>
+                    <td className="text-center">{appointment.date}</td>
                     <td className="text-center"> {appointment.time}</td>
                     <td className="text-center">
                       {appointment.technician.name}
@@ -161,10 +158,7 @@ const AppointmentsList = () => {
                   <tr className="" key={appointment.id}>
                     <td className="text-center">{appointment.vin}</td>
                     <td className="text-center">{appointment.customer_name}</td>
-                    <td className="text-center">
-                      {" "}
-                      {new Date(appointment.date).toLocaleDateString()}
-                    </td>
+                    <td className="text-center">{appointment.date}</td>
                     <td className="text-center"> {appointment.time}</td>
                     <td className="text-center">
                       {appointment.technician.name}

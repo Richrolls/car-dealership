@@ -22,7 +22,7 @@ class Technician(models.Model):
 
 class Appointment(models.Model):
     customer_name = models.CharField(max_length=200)
-    date = models.DateTimeField()
+    date = models.DateField(null=True)
     time = models.CharField(max_length=50)
     reason = models.CharField(max_length=200)
     vin = models.CharField(max_length=17)
