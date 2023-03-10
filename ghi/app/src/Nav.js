@@ -20,6 +20,30 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle text-white"
+                to="/manufacturers"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Manufacturers
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <Link className="dropdown-item" to="/manufacturers">
+                    View Current Manufacturers
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/manufacturers/new">
+                    Add a Manufacturer
+                  </Link>
+                </li>
+              </ul>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle text-white"
@@ -40,30 +64,6 @@ function Nav() {
                 <li>
                   <Link className="dropdown-item" to="/models/new">
                     Add a Model
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle text-white"
-                to="/manufacturers"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Manufacturers
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link className="dropdown-item" to="/manufacturers">
-                    View Current Manufacturers
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/manufacturers/new">
-                    Add a Manufacturer
                   </Link>
                 </li>
               </ul>

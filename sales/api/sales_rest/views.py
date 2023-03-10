@@ -64,12 +64,12 @@ def api_sales(request):
     else:
         content = json.loads(request.body)
         try:
-            automobile_id = content["automobile_id"]
-            automobile = AutomobileVO.objects.get(pk=automobile_id)
+            automobile_vin = content["automobile"]
+            automobile = AutomobileVO.objects.get(vin=automobile_vin)
             content["automobile"] = automobile
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
-                {"message": "Automobile id does not exist."},
+                {"message": "Automobile does not exist."},
                 status=404,
             )
         try:

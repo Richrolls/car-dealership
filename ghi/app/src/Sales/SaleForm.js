@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 
 function SaleForm() {
   const [automobiles, setAutomobiles] = useState([]);
+  const [voAutomobiles, setVOAutomobiles] = useState([]);
   const [salesPeople, setSalesPeople] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [soldAutomobiles, setSoldAutomobiles] = useState([]);
   const [formData, setFormData] = useState({
     price: "",
-    automobile_id: "",
+    automobile: "",
     sales_person_id: "",
     potential_customer_id: "",
   });
@@ -74,7 +75,7 @@ function SaleForm() {
     if (response.ok) {
       setFormData({
         price: "",
-        automobile_id: "",
+        automobile: "",
         sales_person_id: "",
         potential_customer_id: "",
       });
@@ -129,16 +130,16 @@ function SaleForm() {
             <div className="mb-3">
               <select
                 onChange={handleFormChange}
-                value={formData.automobile_id}
+                value={formData.automobile}
                 required
-                name="automobile_id"
-                id="automobile_id"
+                name="automobile"
+                id="automobile"
                 className="form-control"
               >
                 <option value="">Choose an automobile</option>
                 {getAvailableAutomobiles().map((automobile) => {
                   return (
-                    <option key={automobile.id} value={automobile.id}>
+                    <option key={automobile.vin} value={automobile.vin}>
                       {automobile.vin}
                     </option>
                   );
